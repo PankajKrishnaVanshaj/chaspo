@@ -83,52 +83,46 @@ export default function Home() {
         </div>
       </header>
 
-<<<<<<< HEAD
-      <div className="">
-=======
-      <div >
->>>>>>> f1dc6c19de2eac14e1b597ca5d3f417c2c8bb016
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
-          <div className="flex justify-center">
-            <Link
-              href="/dashboard"
-              className="inline-flex items-center gap-x-2 bg-white border border-purple-500 text-sm text-gray-800 p-1 pl-3 rounded-full transition hover:border-gray-300 dark:bg-neutral-800 dark:border-neutral-700 dark:hover:border-neutral-600 dark:text-neutral-200"
-            >
-              <span className="font-bold text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-red-500 to-purple-600">
-                pankri.com
-              </span>
-              All new Apps
-              <span className="py-1.5 px-2.5 inline-flex items-center gap-x-2 rounded-full bg-red-300 text-gray-600 font-semibold dark:bg-neutral-700 dark:text-neutral-400">
-                <ChevronRight className="w-4 h-4" />
-              </span>
-            </Link>
-          </div>
-
-          <div className="pt-4 px-4 mx-auto max-w-screen-xl text-center lg:pt-12 lg:px-12">
-            <h1 className="block text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-200">
-              PK ChaSpo
-              <div className="text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-red-500 to-purple-600">
-                Your AI Content Generator
-              </div>
-            </h1>
-          </div>
-
-          <div className="pt-2 max-w-3xl mx-auto text-center">
-            <p className="text-lg text-gray-600 dark:text-neutral-400">
-              Transform your content creation with our AI-powered app, producing
-              engaging and high-quality text in just seconds.
-            </p>
-          </div>
-
-          <div className="mt-8 flex justify-center">
-            <Link
-              href="/dashboard"
-              className="inline-flex items-center gap-x-3 bg-gradient-to-br from-purple-900 via-red-500 to-purple-600 hover:scale-105 border border-transparent text-white text-sm font-medium rounded-md py-3 px-4 focus:outline-none focus:ring-1 focus:ring-gray-600 dark:focus:ring-offset-gray-800 transition duration-300 ease-in-out"
-            >
-              Get started
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
+        <div className="flex justify-center">
+          <Link
+            href="/dashboard"
+            className="inline-flex items-center gap-x-2 bg-white border border-purple-500 text-sm text-gray-800 p-1 pl-3 rounded-full transition hover:border-gray-300 dark:bg-neutral-800 dark:border-neutral-700 dark:hover:border-neutral-600 dark:text-neutral-200"
+          >
+            <span className="font-bold text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-red-500 to-purple-600">
+              pankri.com
+            </span>
+            All new Apps
+            <span className="py-1.5 px-2.5 inline-flex items-center gap-x-2 rounded-full bg-red-300 text-gray-600 font-semibold dark:bg-neutral-700 dark:text-neutral-400">
               <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
+            </span>
+          </Link>
+        </div>
+
+        <div className="pt-4 px-4 mx-auto max-w-screen-xl text-center lg:pt-12 lg:px-12">
+          <h1 className="block text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-200">
+            PK ChaSpo
+            <div className="text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-red-500 to-purple-600">
+              Your AI Content Generator
+            </div>
+          </h1>
+        </div>
+
+        <div className="pt-2 max-w-3xl mx-auto text-center">
+          <p className="text-lg text-gray-600 dark:text-neutral-400">
+            Transform your content creation with our AI-powered app, producing
+            engaging and high-quality text in just seconds.
+          </p>
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <Link
+            href="/dashboard"
+            className="inline-flex items-center gap-x-3 bg-gradient-to-br from-purple-900 via-red-500 to-purple-600 hover:scale-105 border border-transparent text-white text-sm font-medium rounded-md py-3 px-4 focus:outline-none focus:ring-1 focus:ring-gray-600 dark:focus:ring-offset-gray-800 transition duration-300 ease-in-out"
+          >
+            Get started
+            <ChevronRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
 
