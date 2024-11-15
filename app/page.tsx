@@ -83,7 +83,11 @@ export default function Home() {
         </div>
       </header>
 
+<<<<<<< HEAD
       <div className="">
+=======
+      <div >
+>>>>>>> f1dc6c19de2eac14e1b597ca5d3f417c2c8bb016
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
           <div className="flex justify-center">
             <Link
