@@ -9,6 +9,7 @@ import { TotalUsageProvider } from "./(context)/TotalUsageContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  manifest: "/manifest.json",
   title: "PK ChaSpo | AI-Powered Content Generator",
   description:
     "Create engaging content effortlessly with PK ChaSpo. Powered by advanced AI, it generates high-quality content for blogs, social media, and websites in seconds.",
