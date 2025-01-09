@@ -28,7 +28,7 @@ export default [
     icon: "https://cdn-icons-png.flaticon.com/128/4905/4905454.png",
     slug: "blog-content-generation",
     aiPrompt:
-      "Generate Blog Content based on topic and outline in rich text editor format",
+      "Generate 100% SEO-friendly, plagiarism-free blog content that mimics human-like writing. The content should be engaging, natural, and well-structured, including headings, subheadings, bullet points, and paragraphs. Use conversational yet professional language, integrate relevant keywords seamlessly, and ensure originality while keeping the tone relatable and tailored to the target audience.",
     form: [
       {
         label: "Enter your blog topic",

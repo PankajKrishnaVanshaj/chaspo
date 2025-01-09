@@ -27,11 +27,11 @@ const Header = () => {
         />
       </div>
       <div className="flex gap-5 items-center">
-        <h2 className="hidden md:block bg-primary p-1 rounded-full text-xs text-white px-2 ">
+        {/* <h2 className="hidden md:block bg-primary p-1 rounded-full text-xs text-white px-2 ">
           <Link href={"/dashboard/billing"}>
             Join Membership just for $9.99/Month
           </Link>
-        </h2>
+        </h2> */}
         {/* authentication */}
         <div className="flex items-center gap-4">
           <div className="sm:flex sm:gap-4">
