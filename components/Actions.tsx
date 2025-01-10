@@ -50,11 +50,9 @@ export const handleShare = async (historyId: string) => {
     if (navigator.share) {
       // Check for Web Share API support
       await navigator.share(shareData);
-      alert("Content shared successfully!");
     } else {
       // Fallback for browsers without Web Share API
       await navigator.clipboard.writeText(baseUrl);
-      alert("Link copied to clipboard! You can share it anywhere.");
     }
   } catch (error: unknown) {
     const errorMessage =
