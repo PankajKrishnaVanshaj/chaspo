@@ -4,6 +4,7 @@ import HistoryModel, { IHistory } from "@/DataBase/models/HistoryModel";
 import UserModel from "@/DataBase/models/user";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../auth/[...nextauth]/options";
+import { Types } from "mongoose";
 
 async function connectDB() {
   try {
@@ -13,37 +14,73 @@ async function connectDB() {
   }
 }
 
-export async function GET(req: NextRequest) {
+
+
+export async function GET(req: Request) {
   try {
     const session = await getServerSession({
-      req, // Include req directly here
-      ...authOptions, // Spread the authOptions to include all other necessary options
-    });
+      req,
+      ...authOptions,
+    })
     await connectDB();
 
-    const createdBy = session?.user?.email;
-    if (!createdBy) {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+
+    if (id) {
+      // Validate if ID is valid
+      if (!Types.ObjectId.isValid(id)) {
+        return NextResponse.json(
+          { success: false, error: "Invalid ID format" },
+          { status: 400 }
+        );
+      }
+      try {
+        const history = await HistoryModel.findById(id);
+        if (!history) {
+          return NextResponse.json(
+            { success: false, error: "history not found" },
+            { status: 404 }
+          );
+        }
+        return NextResponse.json(
+          { success: true, data: history },
+          { status: 200 }
+        );
+      } catch (error) {
+        console.error("Error fetching history details:", error);
+        return NextResponse.json(
+          { success: false, error: "Server Error" },
+          { status: 500 }
+        );
+      }
+    } else {
+      const createdBy = session?.user?.email;
+      if (!createdBy) {
+        return NextResponse.json(
+          { success: false, error: "Missing createdBy parameter" },
+          { status: 400 }
+        );
+      }
+
+      const user = await UserModel.findOne({ email: createdBy });
+
+      if (!user) {
+        return NextResponse.json(
+          { success: false, error: "User not found" },
+          { status: 404 }
+        );
+      }
+
+      const historyData = await HistoryModel.find({
+        createdBy: user._id,
+      });
+
       return NextResponse.json(
-        { success: false, error: "Missing createdBy parameter" },
-        { status: 400 }
+        { success: true, data: historyData },
+        { status: 200 }
       );
     }
-
-    const user = await UserModel.findOne({ email: createdBy });
-
-    if (!user) {
-      return NextResponse.json(
-        { success: false, error: "User not found" },
-        { status: 404 }
-      );
-    }
-
-    const histories = await HistoryModel.find({ createdBy: user._id });
-
-    return NextResponse.json(
-      { success: true, data: histories },
-      { status: 200 }
-    );
   } catch (error: any) {
     console.error("Error occurred:", error.message);
     return NextResponse.json(
@@ -52,6 +89,8 @@ export async function GET(req: NextRequest) {
     );
   }
 }
+
+
 
 export async function POST(req: NextRequest) {
   try {

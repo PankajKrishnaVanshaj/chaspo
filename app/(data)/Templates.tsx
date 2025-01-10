@@ -28,7 +28,8 @@ export default [
     icon: "https://cdn-icons-png.flaticon.com/128/4905/4905454.png",
     slug: "blog-content-generation",
     aiPrompt:
-      "Generate 100% SEO-friendly, plagiarism-free blog content that mimics human-like writing. The content should be engaging, natural, and well-structured, including headings, subheadings, bullet points, and paragraphs. Use conversational yet professional language, integrate relevant keywords seamlessly, and ensure originality while keeping the tone relatable and tailored to the target audience.",
+      "Generate 100% SEO-friendly, plagiarism-free blog content that mimics human-like writing. The content should be well-structured with Heading 1 (H1) as the main title, followed by Heading 2 (H2) for major sections, and Heading 3 (H3) for subsections. Include bullet points and paragraphs where necessary to improve readability. Use a conversational yet professional tone, integrate relevant keywords seamlessly, and ensure the content is original, engaging, and tailored to the target audience, while maintaining a natural, human-like flow.",
+
     form: [
       {
         label: "Enter your blog topic",

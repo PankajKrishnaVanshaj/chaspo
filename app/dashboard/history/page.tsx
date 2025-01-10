@@ -1,4 +1,5 @@
 "use client";
+
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { TEMPLATE } from "../_components/TemplateListSection";
@@ -6,12 +7,13 @@ import Templates from "@/app/(data)/Templates";
 import axios from "axios";
 import Image from "next/image";
 import moment from "moment";
-import { handleCopy } from "@/components/handleCopy";
+import { handleCopy, handleDelete, handleShare } from "@/components/Actions";
 import { Button } from "@/components/ui/button";
-import { ChevronsLeft, ChevronsRight, Copy } from "lucide-react";
+import { ChevronsLeft, ChevronsRight, Copy, Share2, Trash2 } from "lucide-react";
+import Link from "next/link";
 
 export interface HISTORY {
-  id: string;
+  _id: string;
   formData: string;
   aiResponse: string;
   templateSlug: string;
@@ -47,6 +49,10 @@ const History = () => {
     }
   }, [createdBy]);
 
+  const updateHistoryList = (callback: (prevList: HISTORY[]) => HISTORY[]) => {
+    setHistoryList(callback);
+  };
+
   const GetTemplateName = (slug: string) => {
     const template: TEMPLATE | undefined = Templates?.find(
       (item) => item.slug === slug
@@ -69,63 +75,101 @@ const History = () => {
   const currentItems = historyList.slice(startIndex, endIndex);
 
   return (
-    <div className="m-5 p-5 border rounded-lg bg-white">
-      <div className=" flex justify-between ">
-        <h2 className="font-bold text-3xl">History</h2>
-        <div className="gap-5 flex items-center">
-          <Button onClick={handlePreviousPage} disabled={currentPage === 1}>
+    <div className="m-5 p-6 border rounded-lg bg-gray-50 shadow-lg">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="font-extrabold text-3xl text-gray-800">History</h2>
+        <div className="flex gap-3 items-center">
+          <Button
+            onClick={handlePreviousPage}
+            disabled={currentPage === 1}
+            className="p-2 rounded-md bg-purple-800 hover:bg-gray-300 disabled:opacity-50"
+          >
             <ChevronsLeft />
           </Button>
-          {currentPage}
+          <span className="text-lg font-medium">{currentPage}</span>
           <Button
             onClick={handleNextPage}
             disabled={endIndex >= historyList.length}
+            className="p-2 rounded-md bg-purple-800 hover:bg-gray-300 disabled:opacity-50"
           >
             <ChevronsRight />
           </Button>
         </div>
       </div>
-      <p className="text-gray-500">
+      <p className="text-gray-600 mb-6 text-base">
         Search your previously generated AI content
       </p>
-      <div className="hidden md:grid grid-cols-7 font-bold bg-secondary mt-5 py-3 px-3">
-        <h2 className="col-span-2">TEMPLATE</h2>
-        <h2 className="col-span-2">AI RESP</h2>
-        <h2>DATE</h2>
-        <h2>WORDS</h2>
-        <h2>COPY</h2>
-      </div>
+
       {currentItems.map((item: HISTORY, index: number) => (
-        <React.Fragment key={index}>
-          <div className="grid grid-cols-1 md:grid-cols-7 my-5 py-3 px-3">
-            <h2 className="md:col-span-2 flex gap-2 items-center">
+        <div
+          key={index}
+          className="flex flex-col md:flex-row gap-4 items-start md:items-center p-4 mb-5 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
+        >
+          <div className="flex flex-col sm:flex-row items-center gap-5 w-full">
+            <div className="flex items-center gap-3 w-full sm:w-1/4">
               <Image
-                src={GetTemplateName(item?.templateSlug)?.icon || ""}
-                width={25}
-                height={25}
+                src={GetTemplateName(item?.templateSlug)?.icon || "/placeholder-icon.png"}
+                width={36}
+                height={36}
                 alt="icon"
+                className="rounded-full bg-gray-200 p-2 shadow-sm"
               />
-              <span>{GetTemplateName(item.templateSlug)?.name}</span>
-            </h2>
-            <h2 className="md:col-span-2 line-clamp-3 mr-3">
-              {item?.aiResponse}
-            </h2>
-            <h2 className="hidden md:block">
-              {moment(item.createdAt).format("DD/MM/YYYY")}
-            </h2>
-            <h2 className="hidden md:block">{item?.aiResponse.length}</h2>
-            <div className="flex items-center justify-center">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => handleCopy(item.aiResponse)}
-              >
-                <Copy className="w-4 h-4 mr-1" /> Copy
-              </Button>
+              <span className="text-sm font-medium text-gray-700">
+                {GetTemplateName(item.templateSlug)?.name || "Unknown"}
+              </span>
+            </div>
+
+            <div className="flex-1 mt-2 sm:mt-0">
+              <Link href={`/dashboard/content/${item?._id}/history`} passHref>
+                <p
+                  className="text-sm sm:text-base line-clamp-2 sm:line-clamp-3 overflow-hidden text-gray-800 hover:text-purple-600 hover:font-semibold transition duration-200"
+                  dangerouslySetInnerHTML={{
+                    __html: item?.aiResponse,
+                  }}
+                />
+              </Link>
             </div>
           </div>
-          <hr />
-        </React.Fragment>
+
+          <div className="hidden md:flex flex-col items-center w-1/4 text-center">
+            <span className="text-xs text-gray-500">
+              {moment(item.createdAt).format("DD/MM/YYYY")}
+            </span>
+            <span className="text-xs text-gray-600">
+              {item?.aiResponse.split(" ").length} words
+            </span>
+          </div>
+
+          <div className="flex flex-col gap-2 w-full md:w-1/5">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => handleDelete(item._id, updateHistoryList)}
+              className="flex items-center gap-2 text-red-600 border-red-500 hover:bg-red-100"
+            >
+              <Trash2 className="w-4 h-4" />
+              Delete
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => handleShare(item._id)}
+              className="flex items-center gap-2 text-blue-600 border-blue-500 hover:bg-blue-100"
+            >
+              <Share2 className="w-4 h-4" />
+              Share
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => handleCopy(item.aiResponse)}
+              className="flex items-center gap-2 text-gray-600 border-gray-500 hover:bg-gray-200"
+            >
+              <Copy className="w-4 h-4" />
+              Copy
+            </Button>
+          </div>
+        </div>
       ))}
     </div>
   );

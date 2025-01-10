@@ -3,7 +3,7 @@ import "@toast-ui/editor/dist/toastui-editor.css";
 import { Editor } from "@toast-ui/react-editor";
 import { Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { handleCopy } from "@/components/handleCopy";
+import { handleCopy } from "@/components/Actions";
 
 interface Props {
   aiOutput: string;
