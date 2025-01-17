@@ -28,8 +28,7 @@ export default [
     icon: "https://cdn-icons-png.flaticon.com/128/4905/4905454.png",
     slug: "blog-content-generation",
     aiPrompt:
-      "Generate 100% SEO-friendly, plagiarism-free blog content that mimics human-like writing. The content should be well-structured with Heading 1 (H1) as the main title, followed by Heading 2 (H2) for major sections, and Heading 3 (H3) for subsections. Include bullet points and paragraphs where necessary to improve readability. Use a conversational yet professional tone, integrate relevant keywords seamlessly, and ensure the content is original, engaging, and tailored to the target audience, while maintaining a natural, human-like flow.",
-
+      "Create an engaging, SEO-optimized blog post that mimics natural, human-like writing. The content should include a compelling main title (H1), followed by structured sections with clear headings (H2 for major sections, H3 for subsections). Use bullet points, numbered lists, and short paragraphs to enhance readability. Incorporate keywords naturally to improve search visibility while ensuring originality and relevance. Write in a conversational yet professional tone to captivate readers, and provide value with well-researched and insightful content. Focus on maintaining a smooth flow that keeps the audience hooked and encourages them to share or interact with the article.",
     form: [
       {
         label: "Enter your blog topic",
@@ -39,6 +38,28 @@ export default [
       },
       {
         label: "Enter blog Outline here",
+        field: "textarea",
+        name: "outline",
+      },
+    ],
+  },
+  {
+    name: "Web Story",
+    desc: "An AI-powered tool that generates captivating web stories, optimized for engagement and tailored to your chosen language. Create visually appealing, concise, and engaging stories effortlessly.",
+    category: "Web Story",
+    icon: "https://cdn-icons-png.flaticon.com/128/2870/2870421.png",
+    slug: "web-story-content-generation",
+    aiPrompt:
+      "Your task is Create the minimum 12 points. each point contain more than 100 characters.  Additionally, provide a brief clear title, description and five relevant keywords for the story.",
+    form: [
+      {
+        label: "Enter your web story topic",
+        field: "input",
+        name: "topic",
+        required: true,
+      },
+      {
+        label: "Enter web story outline here",
         field: "textarea",
         name: "outline",
       },
