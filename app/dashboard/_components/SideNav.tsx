@@ -41,7 +41,7 @@ const SideNav = () => {
           height={50}
           // className="rounded-full"
         />
-        <span className="font-extrabold text-2xl  bg-clip-text text-transparent bg-gradient-to-br from-purple-900 via-red-500 to-purple-600">
+        <span className="font-extrabold text-2xl text-transparent bg-clip-text bg-pk-gradient">
           PK ChaSpo
         </span>
       </div>

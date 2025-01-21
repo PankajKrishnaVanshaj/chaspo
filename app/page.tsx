@@ -28,7 +28,7 @@ export default function Home() {
         <div className="flex items-center">
           <div className="flex justify-center items-center gap-3">
             <Image src={"/chaspo.png"} alt="logo" width={50} height={50} />
-            <span className="font-extrabold text-2xl text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-red-500 to-purple-600">
+            <span className="font-extrabold text-2xl text-transparent bg-clip-text bg-pk-gradient">
               PK ChaSpo
             </span>
           </div>
@@ -89,7 +89,7 @@ export default function Home() {
             href="/dashboard"
             className="inline-flex items-center gap-x-2 bg-white border border-purple-500 text-sm text-gray-800 p-1 pl-3 rounded-full transition hover:border-gray-300 dark:bg-neutral-800 dark:border-neutral-700 dark:hover:border-neutral-600 dark:text-neutral-200"
           >
-            <span className="font-bold text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-red-500 to-purple-600">
+            <span className="font-bold text-transparent bg-clip-text bg-pk-gradient">
               pankri.com
             </span>
             All new Apps
@@ -102,7 +102,7 @@ export default function Home() {
         <div className="pt-4 px-4 mx-auto max-w-screen-xl text-center lg:pt-12 lg:px-12">
           <h1 className="block text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-neutral-200">
             PK ChaSpo
-            <div className="text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-red-500 to-purple-600">
+            <div className="text-transparent bg-clip-text bg-pk-gradient">
               Your AI Content Generator
             </div>
           </h1>
