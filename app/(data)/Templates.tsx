@@ -155,8 +155,8 @@ export default [
     category: "Rewriting Tool",
     slug: "rewrite-article",
     aiPrompt:
-      "Rewrite give article without any Plagiarism in rich text editor format",
-    form: [
+"Rewrite the following content to sound completely human and conversational. Use natural language, varied vocabulary, and a mix of sentence structures to create flow and engagement. Incorporate storytelling elements, relatable examples, and personal insights where relevant. Ensure the tone is authentic, dynamic, and emotionally resonant. Avoid repetitive phrasing, overly formal language, or rigid, mechanical patterns to produce writing that feels effortless and genuinely human-crafted."
+,    form: [
       {
         label:
           "🤖 Provide your Article/Blogpost or any other content to rewrite.",
