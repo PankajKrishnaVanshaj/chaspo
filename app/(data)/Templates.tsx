@@ -155,7 +155,7 @@ export default [
     category: "Rewriting Tool",
     slug: "rewrite-article",
     aiPrompt:
-"Rewrite the given content exactly as it is, without adding or removing any part of it. Make a small change, such as altering the spelling of one word or using synonyms, to ensure the content is 100% plagiarism-free while retaining its original meaning, tone, and flow. Ensure the result is natural, human-like, and engaging.",
+      "Rewrite the given content exactly as it is, without adding or removing any part. Make minor changes, such as adjusting word spellings or using synonyms, to ensure the content is 100% plagiarism-free while preserving its original meaning, tone, and flow. Ensure the final result feels natural, human-like, and engaging.",
     form: [
       {
         label:
