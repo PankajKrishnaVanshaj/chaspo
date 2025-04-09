@@ -50,11 +50,11 @@ function FormSection({ selectedTemplate, userFormInput, loading }: PROPS) {
                   name={item.name}
                   required={item?.required}
                   rows={5}
-                  maxLength={2000}
+                  maxLength={20000}
                   onChange={handleInputChange}
                 />
                 <label className="text-xs text-gray-400">
-                  Note:Max 2000 Words
+                  Note:Max 20000 Words
                 </label>
               </>
             ) : null}
