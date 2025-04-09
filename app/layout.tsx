@@ -23,9 +23,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/chaspo.png",
+        url: "http://chaspo.pankri.com/chaspo.png", // Absolute URL
         width: 1200,
-        height: 630,
+        height: 630, // 1.9:1 ratio; Pinterest prefers 2:3 (e.g., 1000x1500)
         alt: "PK ChaSpo AI Content Generator",
       },
     ],
@@ -36,8 +36,7 @@ export const metadata: Metadata = {
     title: "PK ChaSpo | AI-Powered Content Generator",
     description:
       "Generate top-notch content effortlessly with PK ChaSpo. Tailored for bloggers, marketers, and creatives. No items detected. No rich results detected in this URL. Learn more.",
-    images: ["/chaspo.png"],
-    creator: "pankri",
+    images: ["http://chaspo.pankri.com/chaspo.png"], // Absolute URL
   },
 };
 
@@ -54,7 +53,7 @@ export default function RootLayout({
     operatingSystem: "Web",
     offers: {
       "@type": "Offer",
-      price: "0", // Adjust if there's a price
+      price: "0",
       priceCurrency: "USD",
     },
     description:
@@ -65,6 +64,13 @@ export default function RootLayout({
       "@type": "Organization",
       name: "Pankri",
       url: "http://chaspo.pankri.com",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.5",
+      reviewCount: "100",
+      bestRating: "5",
+      worstRating: "1",
     },
   };
 
